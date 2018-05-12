@@ -8,6 +8,8 @@ open fchalk;
     darkRed
     cyan    
     darkCyan
+    green
+    darkGreen
     blue
     darkBlue
     yellow
