@@ -1,6 +1,5 @@
-#load "./fchalk.fs"
+#load "../src/fchalk/fchalk.fs"
 
-open System
 open fchalk;
 
 [

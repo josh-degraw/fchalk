@@ -1,18 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard1.6</TargetFramework>
-    <Description>A simple utility library for colorizing console</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PackageId>fchalk</PackageId>      
+    <Description>A simple utility library for colorizing console output in F#.</Description>
     <Authors>Josh DeGraw</Authors>
-    <Company />
-    <AssemblyVersion>1.0.2.0</AssemblyVersion>
-    <Version>1.0.2</Version>
+    <PackageVersion>1.0.3</PackageVersion>
     <PackageTags>chalk, color, console, fsharp</PackageTags>
     <RepositoryUrl>https://github.com/josh-degraw/fchalk</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://github.com/josh-degraw/fchalk</PackageProjectUrl>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageReleaseNotes>Added signature file</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="fchalk.fsi" />
     <Compile Include="fchalk.fs" />
   </ItemGroup>
 </Project>
