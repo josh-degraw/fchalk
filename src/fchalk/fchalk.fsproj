@@ -14,7 +14,6 @@
     <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://github.com/josh-degraw/fchalk</PackageProjectUrl>
     <PackageReleaseNotes>Added signature file</PackageReleaseNotes>
-    <DocumentationFile>https://raw.githubusercontent.com/josh-degraw/fchalk/master/README.md</DocumentationFile>
   </PropertyGroup>
   
   <ItemGroup>
