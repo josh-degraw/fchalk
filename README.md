@@ -6,8 +6,8 @@ Inspired by [this blog post on the Microsoft Developer blog](https://blogs.msdn.
 
 ## Example
 
-![Sample code](./examples/code.png)
+![Sample code](https://raw.githubusercontent.com/josh-degraw/fchalk/master/examples/code.png)
 
 ## Output
 
-![Sample output](./examples/output.png)
+![Sample output](https://raw.githubusercontent.com/josh-degraw/fchalk/master/examples/output.png)
