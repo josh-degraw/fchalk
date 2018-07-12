@@ -1,47 +1,30 @@
 module fchalk
 
 open System
+open Printf
 
 ///**Description**
-/// Colored printf, Inspired by https://blogs.msdn.microsoft.com/chrsmith/2008/10/01/f-zen-colored-printf/    
+/// Colored printf, Inspired by https://blogs.msdn.microsoft.com/chrsmith/2008/10/01/f-zen-colored-printf/
 ///
-///**Parameters**
-///  * `c` - parameter of type `ConsoleColor`
-///  * `fmt` - parameter of type `Printf.StringFormat<'a,unit>`
-///
-///**Output Type**
-///  * `'a`
-///
-///**Exceptions**
-///
-let cprintf c fmt = 
-    Printf.kprintf
-        (fun s ->
-            let old = Console.ForegroundColor
-            try
-              Console.ForegroundColor <- c;
-              Console.Write s
-
-            finally
-              Console.ForegroundColor <- old)
-        fmt
 
 
-///**Description**
-/// Colored printfn
-///**Parameters**
-///  * `c` - parameter of type `ConsoleColor`
-///  * `fmt` - parameter of type `Printf.StringFormat<unit,unit>`
-///
-///**Output Type**
-///  * `unit`
-let cprintfn c fmt =
-    cprintf c fmt
-    printfn ""
+let private consoleColor (fc : ConsoleColor) = 
+    let current = Console.ForegroundColor
+    Console.ForegroundColor <- fc
+    { new IDisposable with
+          member x.Dispose() = Console.ForegroundColor <- current }
+
+let cprintf color str =
+  kprintf (fun s -> use c = consoleColor color in printf "%s" s) str
+  
+
+let cprintfn color str = 
+  kprintf (fun s -> use c = consoleColor color in printfn "%s" s) str
+
 
 let red = ConsoleColor.Red
 let darkRed = ConsoleColor.DarkRed
-let blue = ConsoleColor.Blue    
+let blue = ConsoleColor.Blue
 let darkBlue = ConsoleColor.DarkBlue
 let green = ConsoleColor.Green
 let darkGreen = ConsoleColor.DarkGreen
@@ -57,4 +40,3 @@ let white = ConsoleColor.White
 let magenta = ConsoleColor.Magenta
 let darkMagenta = ConsoleColor.DarkMagenta
 let black = ConsoleColor.Black
-
