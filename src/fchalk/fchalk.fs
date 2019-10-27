@@ -1,26 +1,44 @@
+///**Description**
+/// Colored printf, Inspired by https://blogs.msdn.microsoft.com/chrsmith/2008/10/01/f-zen-colored-printf/
+///
 module fchalk
 
 open System
 open Printf
 
-///**Description**
-/// Colored printf, Inspired by https://blogs.msdn.microsoft.com/chrsmith/2008/10/01/f-zen-colored-printf/
-///
-
-
-let private consoleColor (fc : ConsoleColor) = 
+let inline private useConsoleColor (fc : ConsoleColor) =
     let current = Console.ForegroundColor
     Console.ForegroundColor <- fc
-    { new IDisposable with
-          member x.Dispose() = Console.ForegroundColor <- current }
+    {
+       new IDisposable with
+          member _.Dispose() = Console.ForegroundColor <- current
+    }
 
-let cprintf color str =
-  kprintf (fun s -> use c = consoleColor color in printf "%s" s) str
-  
+/// **Description**
+/// Print to the console
+/// **Parameters**
+///   * `color` - parameter of type `ConsoleColor`
+///   * `str` - parameter of type `StringFormat<'a,unit>`
+///
+/// **Output Type**
+///   * `'a`
+///
+/// **Exceptions**
+///
+let inline cprintf color str = kprintf (fun s -> use __ = useConsoleColor color in printf "%s" s) str
 
-let cprintfn color str = 
-  kprintf (fun s -> use c = consoleColor color in printfn "%s" s) str
-
+/// **Description**
+/// Print to the console, with a newline
+/// **Parameters**
+///   * `color` - parameter of type `ConsoleColor`
+///   * `str` - parameter of type `StringFormat<'a,unit>`
+///
+/// **Output Type**
+///   * `'a`
+///
+/// **Exceptions**
+///
+let inline cprintfn color str = kprintf (fun s -> use __ = useConsoleColor color in printfn "%s" s) str
 
 let red = ConsoleColor.Red
 let darkRed = ConsoleColor.DarkRed
