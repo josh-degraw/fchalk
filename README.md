@@ -17,6 +17,10 @@ Inspired by [this blog post on the Microsoft Developer blog](https://blogs.msdn.
 # NuGet package manager:
 PM> Install-Package fchalk
 ```
+```f#
+// F# script file
+#r "nuget: fchalk, 2.0.0"
+```
 
 ## Example
 
